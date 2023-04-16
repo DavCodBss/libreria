@@ -19,7 +19,7 @@ public class Libro {
     @Column(nullable = false, name="autore")
     private String autore;
 
-    @Column(nullable = false, length = 13, name="isbn")
+    @Column(nullable = false, length = 13, unique = true, name="isbn")
     private String isbn;
 
     @Column(nullable = false, columnDefinition = "DATE", name="data_pubblicazione")
