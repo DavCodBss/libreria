@@ -13,7 +13,7 @@ public interface UtenteLibroRepository extends JpaRepository<UtenteLibro, Utente
     void deleteById_IdLibro(
             int idLibro);
 
-    void deleteAllById_IdUtente(
-            int idUtente);
+    void deleteById_IdUtente(
+            int id);
 }
 

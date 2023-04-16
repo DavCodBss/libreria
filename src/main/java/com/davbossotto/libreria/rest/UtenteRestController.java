@@ -29,7 +29,7 @@ public class UtenteRestController {
     }
 
     @PostMapping("")
-    public Utente addLibro(@RequestBody Utente utente){
+    public Utente addUtente(@RequestBody Utente utente){
         //Setto l'id a 0 per essere sicuro di evitare problemi con il valore
         //passato tramite il JSON
         utente.setId(0);
@@ -49,9 +49,7 @@ public class UtenteRestController {
         //   throw new RuntimeException("Utente non trovato all'id: " + idUtente);
         //}
 
-        utenteService.deleteByid(idUtente);
-
-        return "Utente con id: " + idUtente + " eliminato con successo.";
+        return utenteService.deleteByid(idUtente);
 
     }
 

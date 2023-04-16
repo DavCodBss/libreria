@@ -1,50 +1,56 @@
 package com.davbossotto.libreria.rest;
 
 import com.davbossotto.libreria.entities.Libro;
-import com.davbossotto.libreria.repositories.LibroRepository;
-import com.davbossotto.libreria.repositories.UtenteLibroRepository;
-import jakarta.transaction.Transactional;
+import com.davbossotto.libreria.services.LibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/libri")
 public class LibroRestController {
 
-    private final LibroRepository libroRepository;
-    private final UtenteLibroRepository utenteLibroRepository;
+    private final LibroService libroService;
     @Autowired
-    public LibroRestController(LibroRepository libroRepository, UtenteLibroRepository utenteLibroRepository){
-        this.libroRepository = libroRepository;
-        this.utenteLibroRepository = utenteLibroRepository;
+    public LibroRestController(LibroService libroService){
+        this.libroService = libroService;
     }
 
     @GetMapping("")
     public List<Libro> findAll(){
-        return libroRepository.findAll();
+        return libroService.findAll();
+    }
+
+    @GetMapping("/{idLibro}")
+    public Libro findById(@PathVariable int idLibro){
+        return libroService.findById(idLibro);
     }
 
     @PostMapping("")
     public Libro addLibro(@RequestBody Libro libro){
-
+        //Setto l'id a 0 per essere sicuro di evitare problemi con il valore
+        //passato tramite il JSON
         libro.setId(0);
-        return this.libroRepository.save(libro);
+        return libroService.save(libro);
     }
 
-    @Transactional
-    @DeleteMapping("/{idLibro}")
-    public String deleteLibro(@PathVariable int idLibro){
-        Optional<Libro> libro = libroRepository.findById(idLibro);
-        if(libro.isPresent()){
-            utenteLibroRepository.deleteById_IdLibro(idLibro);
-            libroRepository.delete(libro.get());
-            return "Libro eliminato con successo" + "\nId Libro eliminato: " + libro.get().getId();
-        }else{
-            return "Libro non eliminato." + "\nNessun libro esistente con id: " + libro.get().getId();
-        }
+    @PutMapping("")
+    public Libro updateLibro(@RequestBody Libro libro){
+        return libroService.save(libro);
     }
+
+
+    @DeleteMapping("{idLibro}")
+    public String deleteLibro(@PathVariable int idLibro){
+        //Libro libro = libroService.findById(idLibro);
+        //if(libro == null){
+        //   throw new RuntimeException("Libro non trovato all'id: " + idLibro);
+        //}
+
+        return libroService.deleteByid(idLibro);
+
+    }
+
 
 }
