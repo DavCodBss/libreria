@@ -1,16 +1,13 @@
 package com.davbossotto.libreria.rest;
 
 
-import com.davbossotto.libreria.entities.Libro;
-import com.davbossotto.libreria.entities.Utente;
 import com.davbossotto.libreria.entities.UtenteLibro;
-import com.davbossotto.libreria.repositories.UtenteLibroRepository;
 import com.davbossotto.libreria.services.UtenteLibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/libreria")
 public class UtenteLibroRestController {
