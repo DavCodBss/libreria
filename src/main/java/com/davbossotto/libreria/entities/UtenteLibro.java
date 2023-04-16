@@ -28,14 +28,14 @@ public class UtenteLibro {
     private Date dataAggiunta;
 
     @Column(nullable = true, columnDefinition = "DATE", name="data_eliminazione")
-    private String dataEliminazione;
+    private Date dataEliminazione;
 
 
     @Column(nullable = false, name="numero_letture")
     private int nLetture = 0;
 
     public UtenteLibro(){};
-    public UtenteLibro(UtenteLibroId id, Utente utente, Libro libro, Date dataAggiunta, String dataEliminazione, int nLetture) {
+    public UtenteLibro(UtenteLibroId id, Utente utente, Libro libro, Date dataAggiunta, Date dataEliminazione, int nLetture) {
         this.id = id;
         this.utente = utente;
         this.libro = libro;
@@ -77,11 +77,11 @@ public class UtenteLibro {
         this.dataAggiunta = dataAggiunta;
     }
 
-    public String getDataEliminazione() {
+    public Date getDataEliminazione() {
         return dataEliminazione;
     }
 
-    public void setDataEliminazione(String dataEliminazione) {
+    public void setDataEliminazione(Date dataEliminazione) {
         this.dataEliminazione = dataEliminazione;
     }
 

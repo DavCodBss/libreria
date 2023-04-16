@@ -2,6 +2,8 @@ package com.davbossotto.libreria.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "libri")
 public class Libro {
@@ -14,11 +16,14 @@ public class Libro {
     @Column(nullable = false, name="titolo")
     private String titolo;
 
+    @Column(nullable = false, name="autore")
+    private String autore;
+
     @Column(nullable = false, length = 13, name="isbn")
     private String isbn;
 
     @Column(nullable = false, columnDefinition = "DATE", name="data_pubblicazione")
-    private String dataPubblicazione;
+    private Date dataPubblicazione;
 
     @Column(nullable = false, length = 4000, name="trama")
     private String trama;
@@ -28,12 +33,13 @@ public class Libro {
 
 
     public Libro(){};
-    public Libro(String titolo, String isbn, String dataPubblicazione, String trama, String copertina) {
+    public Libro(String titolo, String autore, String isbn, Date dataPubblicazione, String trama, String copertina) {
         this.titolo = titolo;
         this.isbn = isbn;
         this.dataPubblicazione = dataPubblicazione;
         this.trama = trama;
         this.copertina = copertina;
+        this.autore = autore;
     }
 
     public int getId() {
@@ -52,6 +58,14 @@ public class Libro {
         this.titolo = titolo;
     }
 
+    public String getAutore() {
+        return autore;
+    }
+
+    public void setAutore(String autore) {
+        this.autore = autore;
+    }
+
     public String getIsbn() {
         return isbn;
     }
@@ -60,11 +74,11 @@ public class Libro {
         this.isbn = isbn;
     }
 
-    public String getDataPubblicazione() {
+    public Date getDataPubblicazione() {
         return dataPubblicazione;
     }
 
-    public void setDataPubblicazione(String dataPubblicazione) {
+    public void setDataPubblicazione(Date dataPubblicazione) {
         this.dataPubblicazione = dataPubblicazione;
     }
 
