@@ -25,18 +25,22 @@ public class Libro {
     @Column(nullable = false, columnDefinition = "DATE", name="data_pubblicazione")
     private Date dataPubblicazione;
 
+    @Column(nullable = true, columnDefinition = "DATE", name="data_eliminazione")
+    private Date dataEliminazione;
+
     @Column(nullable = false, length = 4000, name="trama")
     private String trama;
 
-    @Column(nullable = false, length = 300, name="copertina")
+    @Column(length = 300, name="copertina")
     private String copertina;
 
 
     public Libro(){};
-    public Libro(String titolo, String autore, String isbn, Date dataPubblicazione, String trama, String copertina) {
+    public Libro(String titolo, String autore, String isbn, Date dataPubblicazione, Date dataEliminazione, String trama, String copertina) {
         this.titolo = titolo;
         this.isbn = isbn;
         this.dataPubblicazione = dataPubblicazione;
+        this.dataEliminazione = dataEliminazione;
         this.trama = trama;
         this.copertina = copertina;
         this.autore = autore;
@@ -80,6 +84,14 @@ public class Libro {
 
     public void setDataPubblicazione(Date dataPubblicazione) {
         this.dataPubblicazione = dataPubblicazione;
+    }
+
+    public Date getDataEliminazione() {
+        return dataEliminazione;
+    }
+
+    public void setDataEliminazione(Date dataEliminazione) {
+        this.dataEliminazione = dataEliminazione;
     }
 
     public String getTrama() {

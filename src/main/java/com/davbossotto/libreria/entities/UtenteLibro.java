@@ -27,20 +27,17 @@ public class UtenteLibro {
     @Column(name = "data_aggiunta", nullable = false)
     private Date dataAggiunta;
 
-    @Column(nullable = true, columnDefinition = "DATE", name="data_eliminazione")
-    private Date dataEliminazione;
 
 
     @Column(nullable = false, name="numero_letture")
     private int nLetture = 0;
 
     public UtenteLibro(){};
-    public UtenteLibro(UtenteLibroId id, Utente utente, Libro libro, Date dataAggiunta, Date dataEliminazione, int nLetture) {
+    public UtenteLibro(UtenteLibroId id, Utente utente, Libro libro, Date dataAggiunta, int nLetture) {
         this.id = id;
         this.utente = utente;
         this.libro = libro;
         this.dataAggiunta = dataAggiunta;
-        this.dataEliminazione = dataEliminazione;
         this.nLetture = nLetture;
     }
 
@@ -77,13 +74,6 @@ public class UtenteLibro {
         this.dataAggiunta = dataAggiunta;
     }
 
-    public Date getDataEliminazione() {
-        return dataEliminazione;
-    }
-
-    public void setDataEliminazione(Date dataEliminazione) {
-        this.dataEliminazione = dataEliminazione;
-    }
 
     public int getnLetture() {
         return nLetture;
