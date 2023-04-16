@@ -53,9 +53,9 @@ public class UtenteLibroService {
         Optional<UtenteLibro> utenteLibro = utenteLibroRepository.findById(id);
         if(utenteLibro.isPresent()){
             utenteLibroRepository.delete(utenteLibro.get());
-            return "Eliminato libro dalla libreria" + "\nId Libro eliminato: " + utenteLibro.get().getId();
+            return "Eliminato libro dalla libreria" + "\nId Libro eliminato: " + idLibro;
         }else{
-            return "Libro non eliminato." + "\nNessun libro nella tua libreria con id: " + id;
+            return "Libro non eliminato." + "\nNessun libro nella tua libreria con id: " + idLibro;
         }
     }
 
