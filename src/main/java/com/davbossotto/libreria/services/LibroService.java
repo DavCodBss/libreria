@@ -25,6 +25,18 @@ public class LibroService {
         return libroRepository.findAll();
     }
 
+
+    //Filtra la tabella libri e restituisce tutti i libri senza data di eliminazione o con data di eliminazione
+    // in base alla richiesta dell'utente bool
+    public List<Libro> findByEliminazione(boolean eliminato){
+        if(eliminato){
+            return libroRepository.findByDataEliminazioneIsNotNull();
+        }else{
+            return libroRepository.findByDataEliminazioneIsNull();
+        }
+
+    }
+
     public Libro findById(int id) {
         Optional<Libro> risultato = libroRepository.findById(id);
 

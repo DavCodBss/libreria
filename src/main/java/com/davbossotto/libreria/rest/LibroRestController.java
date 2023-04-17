@@ -27,6 +27,14 @@ public class LibroRestController {
         return libroService.findById(idLibro);
     }
 
+    //Filtra la tabella libra e restituisce tutti i libri senza data di eliminazione o con data di eliminazione
+    // in base alla pathvariable
+
+    @GetMapping("/eliminati/{statoLibro}")
+    public List<Libro> findByEliminazione(@PathVariable boolean statoLibro ){
+        return libroService.findByEliminazione(statoLibro);
+    }
+
     @PostMapping("")
     public Libro addLibro(@RequestBody Libro libro){
         //Setto l'id a 0 per essere sicuro di evitare problemi con il valore
