@@ -30,9 +30,14 @@ public class LibroRestController {
     //Filtra la tabella libra e restituisce tutti i libri senza data di eliminazione o con data di eliminazione
     // in base alla pathvariable
 
-    @GetMapping("/eliminati/{statoLibro}")
-    public List<Libro> findByEliminazione(@PathVariable boolean statoLibro ){
-        return libroService.findByEliminazione(statoLibro);
+    @GetMapping("/eliminati")
+    public List<Libro> findLibriEliminati(){
+        return libroService.findLibriEliminati();
+    }
+
+    @GetMapping("/disponibili")
+    public List<Libro> findLibriDisponibili(){
+        return libroService.findLibriDisponibili();
     }
 
     @PostMapping("")
